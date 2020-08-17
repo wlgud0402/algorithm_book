@@ -13,8 +13,18 @@ class Solution:
             complement = target - n
 
             if complement in nums[i+1:]:
-                return nums.index(n), nums[i+1:].index(complement) + (i+1)
+                return [nums.index(n), nums[i+1:].index(complement) + (i+1)]
+
+#3. 딕셔너리 저장과 조회를 이용하기 => n
+    def twoSum3(self, nums, target):
+        nums_map = {}
+        for i, num in enumerate(nums):
+            if (target - num) in nums_map:
+                return [nums_map[target-num], i]
+            else:
+                nums_map[num] = i  
 
 solution = Solution()
 print(solution.twoSum([2,7,11,15],9))
 print(solution.twoSum2([2,7,11,15],9))
+print(solution.twoSum3([2,7,11,15],9))
